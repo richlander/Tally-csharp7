@@ -11,7 +11,8 @@ class Program
     {
         // binary literals - take the form `0b` to represent bytes, much like `0x` for hex
         // can have separators (wherever you want) for readability
-        int[] numbers = { 0b1, 0b10, 0b100, 0b1000, 0b1_0000, 0b10_0000 };
+        // now an oject array to allow for different types of data
+        object[] numbers = { 0b1, new object[] { 0b10, 0b100, 0b1000, 0b1_0000 }, null, 0b10_0000 };
 
         // methods can return tuples
         // the tuple can be deconstructed, for natural usability
@@ -20,12 +21,17 @@ class Program
     }
 
     // a method can define a return value as a tuple
-    private static (int sum, int count) Tally(Int32[] numbers)
+    private static (int sum, int count) Tally(object[] numbers)
     {
         var t = (s: 0, c: 0);
         foreach (var v in numbers)
         {
-            Add(v, 1);
+            // check to see if v is an int
+            if (v is int)
+            {
+                //forced to cast to int, even though a type check was just done
+                Add((int)v, 1);
+            }
         }
         return t;
         // local function
