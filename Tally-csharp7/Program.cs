@@ -35,6 +35,15 @@ class Program
                 case int i:
                     Add(i, 1);
                     break;
+                // add similar pattern for object[]
+                // adds the twist of a condition
+                // avoiding need to check on length within the case
+                // uses tuples again
+                case object[] o when o.Length > 0:
+                    var (summy, county) = Tally(o);
+                    Add(summy, county); 
+                    break;
+
             }
         }
         return t;
