@@ -25,12 +25,12 @@ class Program
         var t = (s: 0, c: 0);
         foreach (var v in numbers)
         {
-            // tuples are value types, so creating them is low cost
-            // different from the tuples in .NET which are classes
-            // equality for tuples is value equality
-            // assignment is the exact same as any other struct assignment
-            t = (t.s + v, t.c + 1);
+            Add(v, 1);
         }
         return t;
+        // local function
+        // flexibility on where it sits in your code
+        // can call itself, unlike lambdas
+        void Add(int s, int c) { t = (t.s + s, t.c + c); }
     }
 }
