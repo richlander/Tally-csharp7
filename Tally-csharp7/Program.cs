@@ -26,11 +26,17 @@ class Program
         var t = (s: 0, c: 0);
         foreach (var v in numbers)
         {
-            // check to see if v is an int
-            if (v is int)
+            // use a pattern - this is a simple one
+            // to check if v is an int
+            // and assign to an int for use later
+            // what is a pattern?
+            // it is a pattern or constraint that is applied to a value
+            // it is satisfied or not and if it is, the pattern gets the value
+            // we're starting out with some simple patterns; more will be added later
+            if (v is int i)
             {
-                //forced to cast to int, even though a type check was just done
-                Add((int)v, 1);
+                // can now use i as an i with no cast
+                Add(i, 1);
             }
         }
         return t;
